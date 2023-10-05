@@ -131,7 +131,7 @@ function saveSchedule() {
         calls: [],
         first_week: divisiontype,
         numerator: [],
-        denominator: {} 
+        denominator: [] 
     };
 
     
@@ -158,20 +158,20 @@ function saveSchedule() {
                 const lessonInfo = lessonContainer.querySelector('.lesson-info');
 
                 const nameInput = lessonInfo.querySelector(`input[name^="${day}-${weekType}-lessonName"]`);
-                const linkSelect = lessonInfo.querySelector(`input[name^="${day}-${weekType}-lessonLink"]`);
-                const teacherSelect = lessonInfo.querySelector(`input[name^="${day}-${weekType}-lessonTeacher"]`);
-                const otherSelect = lessonInfo.querySelector(`input[name^="${day}-${weekType}-lessonOther"]`);
+                const linkInput = lessonInfo.querySelector(`input[name^="${day}-${weekType}-lessonLink"]`);
+                const teacherInput = lessonInfo.querySelector(`input[name^="${day}-${weekType}-lessonTeacher"]`);
+                const otherInput = lessonInfo.querySelector(`input[name^="${day}-${weekType}-lessonOther"]`);
                 const typeSelect = lessonInfo.querySelector(`select[name^="${day}-${weekType}-lessonType"]`);
 
-
-                if (nameInput && teacherSelect) {
+                if (nameInput) {
                     const name = nameInput.value;
-                    const link = linkSelect.value;
-                    const teacher = teacherSelect.value;
-                    const other = otherSelect.value;
+                    const link = linkInput ? linkInput.value : '';
+                    const teacher = teacherInput ? teacherInput.value : '';
+                    const other = otherInput ? otherInput.value : '';
                     const type = typeSelect ? typeSelect.value : '';
+        
+                    lessons.push({ name, type: LessonsTypes[type], link, teacher, other });
                     
-                    lessons.push({ name, type: LessonsTypes[type], link, teacher, other});
                 }
             }
             if (lessons.length > 0) {
@@ -179,20 +179,20 @@ function saveSchedule() {
             }
             
         }
-        if (divisiontype === 'numerator') {
-            if (weekType === 'numerator') {
-                schedule.numerator = week;
-            } else {
+        if (divisiontype == 'denominator'){
+            if (weekType === 'numerator'){
                 schedule.denominator = week;
-            }
-        }else {
-            if (weekType === 'numerator') {
-                schedule.denominator = week;
-            } else {
+            }else {
                 schedule.numerator = week;
             }
         }
-        
+        else if (divisiontype == 'numerator'){
+            if (weekType === 'denominator'){
+                schedule.numerator = week;
+            }else {
+                schedule.denominator = week;
+            }
+        }
     }
 
     
