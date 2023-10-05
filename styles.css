@@ -1,0 +1,168 @@
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    object-fit: cover; 
+    z-index: -1; 
+    filter: blur(10px);
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 0;
+}
+
+
+.content {
+    position: relative;
+    z-index: 1; /* Помещаем контент "над" видео */
+    color: #fff; /* Цвет текста */
+    text-align: left;
+    padding: 100px;
+}
+
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.time-inputs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.time-input {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.time-input label {
+    margin-bottom: 5px;
+}
+.day-header:hover {
+    cursor: pointer;
+}
+.lessons-list {
+    max-height: 100%; 
+    transition: max-height 0.3s ease-out; 
+}
+
+.expanded {
+    max-height: 0;
+    overflow: hidden;
+}
+.lesson-container {
+    background-color: #525252;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    width: 300px;
+    margin-left: -40px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-info label {
+    margin-bottom: 5px;
+}
+.division-select {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+.lesson-info select,
+.lesson-info input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.add-lesson-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.week-schedule {
+    margin-top: 20px;
+}
+
+.days-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.day.expanded {
+    height: 150px; 
+    overflow: hidden;
+}
+.day {
+    flex: 1;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    background-color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+

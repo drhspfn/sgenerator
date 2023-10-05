@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+<video autoplay muted loop id="meme-bg">
+    <source src="./videos/gif.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<audio id="billysound">
+    <source src="./videos/wee-wee.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+<div class="overlay"></div>
+<div class="content">
+    <h2>Расписание</h2>
+    <div class="tabs">
+        <button onclick="openTab('scheduleCallsTab')">Расписание звонков</button>
+        <button onclick="openTab('scheduleLessonsTab')">Расписание пар</button>
+        <button type="button" class="save-schedule-btn" onclick="saveSchedule()">Сохранить расписание</button>
+    </div>
+
+    <div id="scheduleCallsTab" class="tab-content active">
+        <h3>Расписание звонков</h3>
+        <form class="time-inputs">
+            <div class="time-input">
+                <p>Пара #1</p>
+                <div class="lesson">
+                    <label for="startTime1">Начало:</label>
+                    <input type="time" id="startTime1" name="startTime1" value="08:30">
+                </div>
+                <div class="lesson">
+                    <label for="endTime1">Конец:</label>
+                    <input type="time" id="endTime1" name="endTime1" value="09:50">
+                </div>
+            </div>
+
+            <div class="time-input">
+                <p>Пара #2</p>
+                <div class="lesson">
+                    <label for="startTime2">Начало:</label>
+                    <input type="time" id="startTime2" name="startTime2" value="10:05">
+                </div>
+                <div class="lesson">
+                    <label for="endTime2">Конец:</label>
+                    <input type="time" id="endTime2" name="endTime2" value="11:25">
+                </div>
+            </div>
+
+            <div class="time-input">
+                <p>Пара #3</p>
+                <div class="lesson">
+                    <label for="startTime3">Начало:</label>
+                    <input type="time" id="startTime3" name="startTime3" value="11:55">
+                </div>
+                <div class="lesson">
+                    <label for="endTime3">Конец:</label>
+                    <input type="time" id="endTime3" name="endTime3" value="13:15">
+                </div>
+            </div>
+
+            <div class="time-input">
+                <p>Пара #4</p>
+                <div class="lesson">
+                    <label for="startTime4">Начало:</label>
+                    <input type="time" id="startTime4" name="startTime4" value="13:25">
+                </div>
+                <div class="lesson">
+                    <label for="endTime4">Конец:</label>
+                    <input type="time" id="endTime4" name="endTime4" value="14:45">
+                </div>
+            </div>
+
+            <div class="time-input">
+                <p>Пара #5</p>
+                <div class="lesson">
+                    <label for="startTime5">Начало:</label>
+                    <input type="time" id="startTime5" name="startTime5" value="14:55">
+                </div>
+                <div class="lesson">
+                    <label for="endTime5">Конец:</label>
+                    <input type="time" id="endTime5" name="endTime5" value="16:45">
+                </div>
+            </div>
+
+            <div class="time-input">
+                <p>Пара #6</p>
+                <div class="lesson">
+                    <label for="startTime6">Начало:</label>
+                    <input type="time" id="startTime6" name="startTime6" value="16:45">
+                </div>
+                <div class="lesson">
+                    <label for="endTime6">Конец:</label>
+                    <input type="time" id="endTime6" name="endTime6" value="18:05">
+                </div>
+            </div>
+
+            <div class="time-input">
+                <p>Пара #7</p>
+                <div class="lesson">
+                    <label for="startTime7">Начало:</label>
+                    <input type="time" id="startTime7" name="startTime7" value="18:15">
+                </div>
+                <div class="lesson">
+                    <label for="endTime7">Конец:</label>
+                    <input type="time" id="endTime7" name="endTime7" value="19:35">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="scheduleLessonsTab" class="tab-content">
+        <button type="button" class="division-week-btn" onclick="toggleSecondWeek()">Показать вторую неделю</button>
+
+        <label for="divisiontype">Чередование:</label>
+        <select id="divisiontype" name="division-type" class="division-select">
+            <option value="numerator">Числитель</option>
+            <option value="lab">Знаменатель</option>
+        </select>
+
+        <div id="scheduleFirstWeek" class="week-schedule">
+            <h3>Расписание на первую неделю</h3>
+            <div class="days-container">
+                <div class="day" id="monday1">
+                    <h4 class="day-header" onclick="toggleDay('monday1')">Понедельник</h4>
+                    <button type="button" id="monday-add-btn" class="add-lesson-btn" onclick="addLesson('monday', 'numerator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+                <div class="day" id="tuesday1">
+                    <h4 class="day-header" onclick="toggleDay('tuesday1')">Вторник</h4>
+                    <button type="button" id="tuesday-add-btn"  class="add-lesson-btn" onclick="addLesson('tuesday', 'numerator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+                <div class="day" id="wednesday1">
+                    <h4 class="day-header" onclick="toggleDay('wednesday1')">Средда</h4>
+                    <button type="button" id="wednesday-add-btn"  class="add-lesson-btn" onclick="addLesson('wednesday', 'numerator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+                <div class="day" id="thursday1">
+                    <h4 class="day-header" onclick="toggleDay('thursday1')">Четверг</h4>
+                    <button type="button" id="thursday-add-btn"  class="add-lesson-btn" onclick="addLesson('thursday', 'numerator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+                <div class="day" id="friday1">
+                    <h4 class="day-header" onclick="toggleDay('friday1')">Пятница</h4>
+                    <button type="button" id="friday-add-btn"  class="add-lesson-btn" onclick="addLesson('friday', 'numerator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="scheduleSecondWeek" class="week-schedule" style="display: none;">
+            <h3>Расписание на вторую неделю</h3>
+            <div class="days-container">
+                <div class="day" id="monday2">
+                    <h4 class="day-header" onclick="toggleDay('monday2')">Понедельник</h4>
+                    <button type="button" id="monday22-add-btn"  class="add-lesson-btn" onclick="addLesson('monday2', 'denominator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+                <div class="day" id="tuesday2">
+                    <h4 class="day-header" onclick="toggleDay('tuesday2')">Вторник</h4>
+                    <button type="button" id="tuesday22-add-btn"  class="add-lesson-btn" onclick="addLesson('tuesday2', 'denominator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+                <div class="day" id="wednesday2">
+                    <h4 class="day-header" onclick="toggleDay('wednesday2')">Средда</h4>
+                    <button type="button" id="wednesday22-add-btn"  class="add-lesson-btn" onclick="addLesson('wednesday2', 'denominator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+                <div class="day" id="thursday2">
+                    <h4 class="day-header" onclick="toggleDay('thursday2')">Четверг</h4>
+                    <button type="button" id="thursday22-add-btn"  class="add-lesson-btn" onclick="addLesson('thursday2', 'denominator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+                <div class="day" id="friday2">
+                    <h4 class="day-header" onclick="toggleDay('friday2')">Пятница</h4>
+                    <button type="button" id="friday22-add-btn"  class="add-lesson-btn" onclick="addLesson('friday2', 'denominator')">Добавить урок</button>
+                    <ul class="lessons-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
