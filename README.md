@@ -1,0 +1,2 @@
+# sgenerator
+Schedule config generator
