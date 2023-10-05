@@ -126,10 +126,10 @@ function toggleDay(dayId) {
 function saveSchedule() {
     const buttonSound = document.getElementById('billysound');
     buttonSound.play();
-
+    const divisiontype = document.getElementById('divisiontype').value;
     const schedule = {
         calls: [],
-        first_week: document.getElementById('divisiontype').value,
+        first_week: divisiontype,
         numerator: [],
         denominator: {} 
     };
@@ -179,13 +179,20 @@ function saveSchedule() {
             }
             
         }
-
-        if (weekType === 'numerator') {
-            schedule.numerator = week;
-        } else {
-            
-            schedule.denominator[weekType] = week;
+        if (divisiontype === 'numerator') {
+            if (weekType === 'numerator') {
+                schedule.numerator = week;
+            } else {
+                schedule.denominator = week;
+            }
+        }else {
+            if (weekType === 'numerator') {
+                schedule.denominator = week;
+            } else {
+                schedule.numerator = week;
+            }
         }
+        
     }
 
     
@@ -201,6 +208,6 @@ function saveSchedule() {
     a.style.display = 'none';
 
     document.body.appendChild(a);
-    //a.click();
+    a.click();
     document.body.removeChild(a);
 }
