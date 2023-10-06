@@ -179,19 +179,11 @@ function saveSchedule() {
             }
             
         }
-        if (divisiontype == 'denominator'){
-            if (weekType === 'numerator'){
-                schedule.denominator = week;
-            }else {
-                schedule.numerator = week;
-            }
+        if (weekType === 'numerator') {
+            schedule.numerator = week;
         }
-        else if (divisiontype == 'numerator'){
-            if (weekType === 'denominator'){
-                schedule.numerator = week;
-            }else {
-                schedule.denominator = week;
-            }
+        else{
+            schedule.denominator = week;
         }
     }
 
