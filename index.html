@@ -24,6 +24,8 @@
         <button onclick="openTab('scheduleCallsTab')">Расписание звонков</button>
         <button onclick="openTab('scheduleLessonsTab')">Расписание пар</button>
         <button type="button" class="save-schedule-btn" onclick="saveSchedule()">Сохранить расписание</button>
+        <input type="file" id="fileInput" accept=".json" />
+    <button type="button" class="edit-schedule-btn" onclick="editSchedule()">Редактировать расписание</button>
     </div>
 
     <div id="scheduleCallsTab" class="tab-content active">
