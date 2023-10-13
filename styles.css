@@ -76,8 +76,14 @@ button {
     display: flex;
     flex-wrap: wrap;
 }
-
+.lesson {
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px; 
+}
 .time-input {
+    flex: 1;
     margin: 5px;
     display: flex;
     flex-direction: column;
