@@ -23,9 +23,7 @@
     <div class="tabs">
         <button onclick="openTab('scheduleCallsTab')">Расписание звонков</button>
         <button onclick="openTab('scheduleLessonsTab')">Расписание пар</button>
-        <button type="button" class="save-schedule-btn" onclick="saveSchedule()">Сохранить расписание</button>
-        <input type="file" id="fileInput" accept=".json" />
-    <button type="button" class="edit-schedule-btn" onclick="editSchedule()">Редактировать расписание</button>
+        <button type="button" class="save-schedule-btn" style="background-color: #978100;" onclick="saveSchedule()">Сохранить расписание</button>
     </div>
 
     <div id="scheduleCallsTab" class="tab-content active">
@@ -125,7 +123,8 @@
             <option value="numerator">Числитель</option>
             <option value="denominator">Знаменатель</option>
         </select>
-
+        <input type="file" id="fileInput" accept=".json" style="display:none" onchange="handleFile()"/>
+        <button type="button" class="edit-schedule-btn" style="background-color: #4c89af;" onclick="editSchedule()">Редактировать расписание</button>
         <div id="scheduleFirstWeek" class="week-schedule">
             <h3>Расписание на первую неделю</h3>
             <div class="days-container">
