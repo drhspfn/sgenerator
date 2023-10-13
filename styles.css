@@ -42,6 +42,10 @@ video#meme-bg {
     .tabs button {
         margin-bottom: 10px; 
     }
+    .time-inputs {
+        flex-direction: row; 
+        align-items: stretch;
+    }
 }
 
 
@@ -80,17 +84,19 @@ button {
     border: 1px solid #4CAF50;
     border-radius: 5px;
     padding: 10px;
+    width: 80%;
     margin-bottom: 10px; 
 }
 .time-input {
     flex: 1;
-    margin: 5px;
+    margin: 10px;
     display: flex;
     flex-direction: column;
     border: 1px solid #4CAF50;
     border-radius: 5px;
     padding: 10px;
-    margin-right: 10px;
+    width: 60%;
+    margin-right: 20px;
 }
 
 .time-input label {
