@@ -30,6 +30,8 @@ __This bot does not provide the ability to read/save our dialogues, files or oth
 
 
 # Known Issues
+Report any issues or suggestions you find in the appropriate tab))
+
 * Both the generator and the bot are not intended for a weekly schedule.
      -  Fix - `Copy the list from numerator to denominator in the schedule file.`
 
