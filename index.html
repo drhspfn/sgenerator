@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,27 +7,31 @@
     <title>Расписание</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="script.js" defer></script>
+
 </head>
 <body>
+<!--
 <video autoplay muted loop id="meme-bg">
     <source src="./videos/gif.mp4" type="video/mp4">
     Your browser does not support the video tag.
-</video>
+</video>-->
 <audio id="billysound">
     <source src="./videos/wee-wee.mp3" type="audio/mp3">
     Your browser does not support the audio element.
 </audio>
 <div class="overlay"></div>
 <div class="content">
-    <h2>Расписание</h2>
+    <h2 class='hPageTitle'>Расписание</h2>
+    <div id="google_element"></div>
     <div class="tabs">
-        <button onclick="openTab('scheduleCallsTab')">Расписание звонков</button>
-        <button onclick="openTab('scheduleLessonsTab')">Расписание пар</button>
-        <button type="button" class="save-schedule-btn" style="background-color: #978100;" onclick="saveSchedule()">Сохранить расписание</button>
+        <button class="btnCallsTab" onclick="openTab('scheduleCallsTab')">Расписание звонков</button>
+        <button class="btnLessonsTab" onclick="openTab('scheduleLessonsTab')">Расписание пар</button>
+        <button class="btnSave" type="button" class="save-schedule-btn" style="background-color: #978100;" onclick="saveSchedule()">Сохранить расписание</button>
+        
     </div>
 
     <div id="scheduleCallsTab" class="tab-content active">
-        <h3>Расписание звонков</h3>
+        <h3 name="aaaaaaa" id="btnCallsTab">Расписание звонков</h3>
         <form class="time-inputs">
             <div class="time-input">
                 <p>Пара #1</p>
@@ -188,6 +192,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
