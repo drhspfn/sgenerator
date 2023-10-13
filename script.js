@@ -166,12 +166,26 @@ function saveSchedule() {
                 const typeSelect = lessonInfo.querySelector(`select[name^="${day}-${weekType}-lessonType"]`);
 
                 if (nameInput) {
-                    const name = nameInput.value;
-                    const link = linkInput ? linkInput.value : '';
+                    var name = nameInput.value;
+                    var link = linkInput ? linkInput.value : '';
                     const teacher = teacherInput ? teacherInput.value : '';
                     const other = otherInput ? otherInput.value : '';
                     const type = typeSelect ? typeSelect.value : '';
-        
+                    
+                    var namesArray = name.split('|');
+                    var linksArray = link.split('|');
+
+                    var maxItems = Math.max(namesArray.length, linksArray.length);
+                    for (var i = 0; i < maxItems; i++) {
+                        var lessonName = namesArray[i] || 'Название не указано';
+                        var lessonLink = linksArray[i] || 'http://youtube.com';
+            
+                        namesArray[i] = lessonName;
+                        linksArray[i] = lessonLink;
+                    }
+                    name= namesArray.join('|');
+                    link = linksArray.join('|');
+
                     lessons.push({ name, type: LessonsTypes[type], link, teacher, other });
                     
                 }
@@ -186,21 +200,6 @@ function saveSchedule() {
         else{
             schedule.denominator = week;
         }
-        /*
-        if (divisiontype == 'denominator'){
-            if (weekType === 'numerator'){
-                schedule.denominator = week;
-            }else {
-                schedule.numerator = week;
-            }
-        }
-        else if (divisiontype == 'numerator'){
-            if (weekType === 'denominator'){
-                schedule.numerator = week;
-            }else {
-                schedule.denominator = week;
-            }
-        }*/
     }
 
     
@@ -219,9 +218,8 @@ function saveSchedule() {
     a.click();
     document.body.removeChild(a);
 }
-
-function editSchedule() {
-    const fileInput = document.getElementById('fileInput');
+function handleFile() {
+    var fileInput = document.getElementById('fileInput');
     const reader = new FileReader();
 
     reader.onload = function (event) {
@@ -242,21 +240,9 @@ function editSchedule() {
     } else {
         alert('Выберите файл JSON для загрузки расписания.');
     }
-    /*const fileInput = document.getElementById('fileInput');
-    
-    fileInput.addEventListener('change', function() {
-        const file = fileInput.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const scheduleData = JSON.parse(e.target.result);
-                loadSchedule(scheduleData);
-            };
-
-            reader.readAsText(file);
-        }
-    });*/
+}
+function editSchedule() {
+    document.getElementById('fileInput').click();
 }
 function updateCallsSchedule(calls) {
     const timeInputs = document.querySelector('.time-inputs');
