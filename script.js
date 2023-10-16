@@ -171,20 +171,23 @@ function saveSchedule() {
                     const teacher = teacherInput ? teacherInput.value : '';
                     const other = otherInput ? otherInput.value : '';
                     const type = typeSelect ? typeSelect.value : '';
-                    
-                    var namesArray = name.split('|');
-                    var linksArray = link.split('|');
-
-                    var maxItems = Math.max(namesArray.length, linksArray.length);
-                    for (var i = 0; i < maxItems; i++) {
-                        var lessonName = namesArray[i] || 'Название не указано';
-                        var lessonLink = linksArray[i] || 'http://youtube.com';
-            
-                        namesArray[i] = lessonName;
-                        linksArray[i] = lessonLink;
+                    if (name.length >= 2)
+                    {
+                        var namesArray = name.split('|');
+                        var linksArray = link.split('|');
+    
+                        var maxItems = Math.max(namesArray.length, linksArray.length);
+                        for (var i = 0; i < maxItems; i++) {
+                            var lessonName = namesArray[i] || 'Название не указано';
+                            var lessonLink = linksArray[i] || 'http://youtube.com';
+                
+                            namesArray[i] = lessonName;
+                            linksArray[i] = lessonLink;
+                        }
+                        name= namesArray.join('|');
+                        link = linksArray.join('|');
                     }
-                    name= namesArray.join('|');
-                    link = linksArray.join('|');
+                    
 
                     lessons.push({ name, type: LessonsTypes[type], link, teacher, other });
                     
